@@ -1,0 +1,33 @@
+# Data
+age_groups <- c("0-10", "11-30", "31-50", "51-80")
+dairy <- c(50, 35, 25, 40)
+staple_food <- c(30, 45, 55, 40)
+high_calorie_food <- c(10, 15, 13, 4)
+supplements <- c(10, 5, 7, 16)
+
+# Creating a data frame
+data <- data.frame(Age = age_groups,
+                   Dairy = dairy,
+                   `Staple Food` = staple_food,
+                   `High-Calorie Food` = high_calorie_food,
+                   Supplements = supplements)
+
+# Convert 'Age' to a factor for categorical plotting
+data$Age <- factor(data$Age, levels = age_groups)
+
+# Line Plot
+matplot(1:4, t(data[, -1]),
+        type = "l",
+        col = rainbow(ncol(data)),
+        lty = 1,
+        pch = 1,
+        xaxt = 'n',  # turn off x-axis
+        xlab = "Age Groups",
+        ylab = "Daily Consumption",
+        main = "Line Plot")
+
+# Add custom x-axis labels
+axis(side = 1, at = 1:4, labels = age_groups)
+
+legend("topright", legend = colnames(data[, -1]), col = rainbow(ncol(data)), lty = 1, cex = 0.8)
+
