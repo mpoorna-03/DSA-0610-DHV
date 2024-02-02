@@ -1,0 +1,20 @@
+library(ggplot2)
+
+# Your data
+data <- data.frame(
+  Month = c("January", "February", "March", "April", "May"),
+  Sales = c(15000, 18000, 22000, 20000, 23000)
+)
+
+# Convert Month to a factor with ordered levels
+data$Month <- factor(data$Month, levels = c("January", "February", "March", "April", "May"))
+
+# Create a line graph
+ggplot(data, aes(x = Month, y = Sales, group = 1)) +
+  geom_line() +
+  geom_point() +
+  scale_y_continuous(labels = scales::comma) +
+  labs(title = "Time Series Analysis - Line Graph",
+       x = "Month",
+       y = "Sales (in $)") +
+  theme_minimal()
