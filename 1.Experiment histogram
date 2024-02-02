@@ -1,0 +1,24 @@
+# Data
+age_groups <- c("0-10", "11-30", "31-50", "51-80")
+dairy <- c(50, 35, 25, 40)
+staple_food <- c(30, 45, 55, 40)
+high_calorie_food <- c(10, 15, 13, 4)
+supplements <- c(10, 5, 7, 16)
+
+# Creating a data frame
+data <- data.frame(Age = age_groups,
+                   Dairy = dairy,
+                   `Staple Food` = staple_food,
+                   `High-Calorie Food` = high_calorie_food,
+                   Supplements = supplements)
+
+# Histograms
+par(mfrow = c(2, 2))  # Set up a 2x2 grid for subplots
+
+for (i in 2:5) {
+  hist(data[, i], main = colnames(data)[i], xlab = "Daily Consumption", col = rainbow(5)[i])
+}
+
+# Reset the plotting layout to default
+par(mfrow = c(1, 1))
+
