@@ -1,0 +1,55 @@
+library(ggplot2)
+
+# Your data
+data <- data.frame(
+  Date = as.Date(c("2023-01-01", "2023-01-02", "2023-01-03", "2023-01-04", "2023-01-05")),
+  Page_Views = c(1500, 1600, 1400, 1650, 1800),
+  Click_Through_Rate = c(2.3, 2.7, 2.0, 2.4, 2.6)
+)
+
+# Stacked Bar Chart
+ggplot(data, aes(x = Date, y = Page_Views, fill = factor(Click_Through_Rate))) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(labels = scales::comma) +
+  labs(title = "Website Traffic Analysis - Stacked Bar Chart",
+       x = "Date",
+       y = "Page Views",
+       fill = "Click-through Rate (%)") +
+  theme_minimal()
+
+# Line Plot
+ggplot(data, aes(x = Date, y = Page_Views, group = 1)) +
+  geom_line() +
+  geom_point() +
+  scale_y_continuous(labels = scales::comma) +
+  labs(title = "Website Traffic Analysis - Line Plot",
+       x = "Date",
+       y = "Page Views") +
+  theme_minimal()
+
+# Scatter Plot
+ggplot(data, aes(x = Date, y = Page_Views)) +
+  geom_point() +
+  scale_y_continuous(labels = scales::comma) +
+  labs(title = "Website Traffic Analysis - Scatter Plot",
+       x = "Date",
+       y = "Page Views") +
+  theme_minimal()
+
+# Histogram
+ggplot(data, aes(x = Page_Views)) +
+  geom_histogram(binwidth = 100, fill = "skyblue", color = "black", alpha = 0.7) +
+  labs(title = "Website Traffic Analysis - Page Views Histogram",
+       x = "Page Views",
+       y = "Frequency") +
+  theme_minimal()
+
+# Line Graph (Click-through Rate)
+ggplot(data, aes(x = Date, y = Click_Through_Rate, group = 1)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Website Traffic Analysis - Click-through Rate Line Graph",
+       x = "Date",
+       y = "Click-through Rate (%)") +
+  theme_minimal()
+
